@@ -88,7 +88,7 @@ sistema-clientes/
 
 ## ✍️ Autor
 
-Desenvolvido por **Cristian Marques** — [https://essentia.consultoriawk.com/clientes/](https://essentia.consultoriawk.com/clientes/index.php/cliente)
+Desenvolvido por **Cristian Marques** — [https://essentia.consultoriawk.com/cliente/](https://essentia.consultoriawk.com/cliente)
 
 ![alt text](uploads/image.png)
 
