@@ -26,19 +26,19 @@
         <?= form_error('email', '<div class="invalid-feedback">', '</div>') ?>
     </div>
 
-<div class="mb-3">
-    <label for="telefone" class="form-label">Telefone</label>
-    <input 
-        type="text" 
-        name="telefone" 
-        class="form-control <?= form_error('telefone') ? 'is-invalid' : '' ?>" 
-        value="<?= set_value('telefone') ?>" 
-        required 
-        pattern="[0-9]{10,11}" 
-        title="Insira um telefone válido com DDD, apenas números.">
-    <?= form_error('telefone', '<div class="invalid-feedback">', '</div>') ?>
-</div>
-
+    <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input 
+            type="text" 
+            name="telefone" 
+            id="telefone"
+            class="form-control <?= form_error('telefone') ? 'is-invalid' : '' ?>" 
+            value="<?= set_value('telefone') ?>" 
+            required 
+            pattern="[0-9]{10,11}" 
+            title="Insira um telefone válido com DDD, apenas números.">
+        <?= form_error('telefone', '<div class="invalid-feedback">', '</div>') ?>
+    </div>
 
     <div class="mb-3">
         <label for="imagem" class="form-label">Imagem</label>
@@ -49,5 +49,15 @@
     <a href="<?= site_url('cliente') ?>" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Voltar</a>
     <?= form_close() ?>
 </div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#telefone').mask('(00) 00000-0000');
+    });
+</script>
+
 </body>
 </html>
