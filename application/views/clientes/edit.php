@@ -43,10 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const telefoneInput = document.getElementById("telefone");
 
   telefoneInput.addEventListener("input", function (e) {
-    let value = e.target.value.replace(/\D/g, ""); // Remove tudo que não for número
+    // Remove tudo que não for número
+    let value = e.target.value.replace(/\D/g, ""); 
 
     if (value.length > 11) {
-      value = value.slice(0, 11); // Limita a 11 dígitos
+      // Limita a 11 dígitos
+      value = value.slice(0, 11); 
     }
 
     // Aplica máscara (99) 99999-9999 ou (99) 9999-9999 conforme o tamanho
