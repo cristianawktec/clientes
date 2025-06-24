@@ -3,6 +3,8 @@
 <head>
     <title>Editar Cliente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js"></script>
 </head>
 <body>
 <div class="container mt-5">
@@ -36,5 +38,28 @@
         <a href="<?= site_url('cliente') ?>" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const telefoneInput = document.getElementById("telefone");
+
+  telefoneInput.addEventListener("input", function (e) {
+    let value = e.target.value.replace(/\D/g, ""); // Remove tudo que não for número
+
+    if (value.length > 11) {
+      value = value.slice(0, 11); // Limita a 11 dígitos
+    }
+
+    // Aplica máscara (99) 99999-9999 ou (99) 9999-9999 conforme o tamanho
+    if (value.length <= 10) {
+      value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+    } else {
+      value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    }
+
+    e.target.value = value.trim();
+  });
+});
+</script>
 </body>
+
 </html>
