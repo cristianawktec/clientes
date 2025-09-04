@@ -110,8 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
     e.target.value = value.trim();
   });
 });
-</script>
-<script>
+
+
 $("#cep").blur(function(){
   var cep = $(this).val().replace(/\D/g, '');
   if(cep.length == 8){
