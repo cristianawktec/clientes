@@ -69,7 +69,7 @@ public function store()
     public function edit($id)
     {
         $cliente = $this->ClienteModel->getById($id);
-        $endereco = $this->EnderecoModel->getByClienteId($id);
+        $endereco = $this->CepModel->get_byId($id);
 
         if (!$cliente) {
             show_404();
