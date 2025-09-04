@@ -68,6 +68,8 @@ public function store()
 
     public function edit($id)
     {
+        $this->load->library('Curl');
+        
         $cliente = $this->ClienteModel->getById($id);
         $endereco = $this->CepModel->get_byId($id);
 
