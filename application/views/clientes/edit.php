@@ -34,6 +34,55 @@
             <?php endif; ?>
         </div>
 
+
+
+
+<h4 class="mt-4">Endereço</h4>
+<div class="row">
+  <div class="col-md-3 mb-3">
+    <label for="cep" class="form-label">CEP:</label>
+    <input type="text" name="cep" id="cep" class="form-control" 
+           value="<?= htmlspecialchars($endereco['cep'] ?? '') ?>">
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="logradouro" class="form-label">Logradouro:</label>
+    <input type="text" name="logradouro" id="logradouro" class="form-control"
+           value="<?= htmlspecialchars($endereco['logradouro'] ?? '') ?>">
+  </div>
+  <div class="col-md-3 mb-3">
+    <label for="numero" class="form-label">Número:</label>
+    <input type="text" name="numero" id="numero" class="form-control"
+           value="<?= htmlspecialchars($endereco['numero'] ?? '') ?>">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 mb-3">
+    <label for="bairro" class="form-label">Bairro:</label>
+    <input type="text" name="bairro" id="bairro" class="form-control"
+           value="<?= htmlspecialchars($endereco['bairro'] ?? '') ?>">
+  </div>
+  <div class="col-md-4 mb-3">
+    <label for="cidade" class="form-label">Cidade:</label>
+    <input type="text" name="cidade" id="cidade" class="form-control"
+           value="<?= htmlspecialchars($endereco['cidade'] ?? '') ?>">
+  </div>
+  <div class="col-md-2 mb-3">
+    <label for="uf" class="form-label">UF:</label>
+    <input type="text" name="uf" id="uf" maxlength="2" class="form-control"
+           value="<?= htmlspecialchars($endereco['uf'] ?? '') ?>">
+  </div>
+  <div class="col-md-2 mb-3">
+    <label for="complemento" class="form-label">Complemento:</label>
+    <input type="text" name="complemento" id="complemento" class="form-control"
+           value="<?= htmlspecialchars($endereco['complemento'] ?? '') ?>">
+  </div>
+</div>
+
+
+
+
+
         <button type="submit" class="btn btn-success">Salvar</button>
         <a href="<?= site_url('cliente') ?>" class="btn btn-secondary">Cancelar</a>
     </form>
@@ -60,6 +109,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     e.target.value = value.trim();
   });
+});
+</script>
+<script>
+$("#cep").blur(function(){
+  var cep = $(this).val().replace(/\D/g, '');
+  if(cep.length == 8){
+    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/", function(dados) {
+      if (!("erro" in dados)) {
+        $("#logradouro").val(dados.logradouro);
+        $("#bairro").val(dados.bairro);
+        $("#cidade").val(dados.localidade);
+        $("#uf").val(dados.uf);
+      } else {
+        alert("CEP não encontrado.");
+      }
+    });
+  }
 });
 </script>
 </body>
