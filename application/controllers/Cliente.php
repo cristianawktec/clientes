@@ -147,7 +147,7 @@ public function store()
         $cep = $this->input->post('cep');
 
         //pesquisa no banco se existe o cep
-        $consulta = $this->cep_model->get_byId($cep);
+        $consulta = $this->CepModel->get_byId($cep);
         //$msg = "Pesquisa Realizada direto do Banco!";
         if($this->db->affected_rows() > 0 ){
              foreach($consulta->result() as $endereco){
@@ -185,9 +185,9 @@ public function store()
             //$dados = json_decode($novo);
             //echo"<pre>";print_r($dados);echo"</pre>";exit;
             //inserindo novo registro no banco 
-            if($this->cep_model->inserir($dados)){
+            if($this->CepModel->inserir($dados)){
                 //pesquisa no banco se existe o cep
-                $dados = $this->cep_model->get_byId($cep);
+                $dados = $this->CepModel->get_byId($cep);
                 //echo"<pre>";print_r($dados);echo"</pre>";exit;
                 if($this->db->affected_rows() > 0 ){
                     foreach($dados->result() as $endereco){
