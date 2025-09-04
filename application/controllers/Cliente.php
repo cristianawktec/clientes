@@ -7,6 +7,7 @@ class Cliente extends CI_Controller
     public function __construct() {
         parent::__construct();
         $this->load->model('ClienteModel');
+        $this->load->model('CepModel');
     }
 
     public function index()
@@ -69,7 +70,7 @@ public function store()
     public function edit($id)
     {
         $this->load->library('Curl');
-        
+
         $cliente = $this->ClienteModel->getById($id);
         $endereco = $this->CepModel->get_byId($id);
 

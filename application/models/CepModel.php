@@ -1,6 +1,6 @@
 <?php
 
-class Cep_model extends CI_Model {
+class CepModel extends CI_Model {
 	
 	public function inserir($dados){
 		return $this->db->insert('enderecos', $dados);
